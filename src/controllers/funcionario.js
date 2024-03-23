@@ -20,6 +20,14 @@ router.post(routerName, async (req,res) =>{
     return res.status(200).json(funcionario);
 })
 
+router.put(routerName + "/:id", async (req,res) =>{
+    const {id} = req.params;
+    const horasTrabalhadas = await funcionarioModel.findById(id);
+    horasTrabalhadas.horasTrabalhadas += req.body.adicionarHoras;
+    await funcionarioModel.findByIdAndUpdate(id,horasTrabalhadas)
+    return res.status(200).json(horasTrabalhadas);
+})
+
 router.delete(routerName + "/:id", async (req,res) => {
     const {id} = req.params;
     const funcionario = await funcionarioModel.findByIdAndDelete(id);

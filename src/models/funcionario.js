@@ -4,8 +4,6 @@ const camposSchema = new mongoose.Schema({
     nome:{
         type: String,
         required: true,
-        minLength: 3,
-        maxLength: 300,
     },
     email:{
         type: String,
@@ -14,23 +12,23 @@ const camposSchema = new mongoose.Schema({
     foto:{
         type: String,
         required: true,
-        minLength: 3,
-        maxLength: 300,
     },
     telefone:{
         type: Number,
-        required: true
+        required: true,
     },
     cargo:{
+        required: true,
         type: String,
+    },
+    horasPorSemana:{
+        required: true,
+        type: Number,
     },
     horasTrabalhadas:{
         type: Number,
+        default: 0
     },
-    horasSemana:{
-        type: Number,
-    }
-
 });
 
 const funcionarioModel = mongoose.model("funcionarios",camposSchema);
